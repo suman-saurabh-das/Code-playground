@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Namaste React</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div id="root">
+    Not rendered!
+  </div>
+  <!-- Adding heading using JavaScript -->
+  <!-- <script>
+    const heading = document.createElement("h2");
+    heading.innerHTML = "Hello world from JavaScript !";
+    const root = document.getElementById("root");
+    root.appendChild(heading);
+  </script> -->
+
+  <!-- React CDN links -->
+  <!-- Core react framework -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <!-- React library for DOM operations -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Adding heading using React -->
+  <!-- <script>
+    // Creating a React element.
+    const heading = React.createElement("h2", {}, "Hello world from React !");
+    // React needs to have a root (element), where it can perform DOM manipulations.
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(heading);
+    console.log(React);
+  </script> -->
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
