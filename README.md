@@ -1,10 +1,10 @@
 # Namaste React - Akshay Saini
 
-## Leetcode
+### Episode 01 - Inception - Creating a basic react-app.
 
 <details>
-<summary><a href="https://github.com/suman-saurabh-das/">Episode 01 - Inception - Creating a basic react-app.
-</a></summary>
+<summary>Notes</summary>
+
   [01] What is emmet ?
   
     • Emmet is a popular plugin for text editors like Visual Studio Code, Sublime Text, and Atom that enhances HTML and CSS coding efficiency through abbreviations. Key features include:
@@ -74,6 +74,158 @@
       ○ Easier Testing
       ○ Flexibility and Maintainability
       ○ Code Reusability
+</details>
+
+### Episode 02 - Igniting our app - i.e. deploying an app to production.
+
+<details>
+<summary>Notes</summary>
+
+  [01] Why do we use npm ?
+
+    • We use npm because only the react code is not sufficient and we need to use other helper packages in addition to the react code to make a production ready application. For e.g. Minifying code, bundling files, remove console logs, optimizing app etc. And these helper packages come inside npm.
+
+      ○ git init : initializes a git repository in current directory.
+      ○ npm init : initializes a package.json file in current directory.
+
+    • npm - is used for managing packages but it doesn't stand for node package manager. 
+    • It enables sharing and reusability of code.
+    • It is used for -
+      ○ Managing (installing, updating, uninstalling) packages/dependencies in your app.
+      ○ Ensuring that the correct versions of libraries are installed and maintained.
+      ○ Running scripts for tasks like testing, building, and deploying your application.
+
+  [02] What is package.json ?
+
+    • package.json is a configuration file for npm.
+    • Contains metadata about project, its dependencies, scripts, and other settings.
+
+  [03] What is a bundler ?
+
+    • Bundler - tool used in web development to combine multiple files and modules into a single, cohesive file (or a few files). This process is essential for optimizing the delivery of assets in web applications, ensuring efficient loading times and better performance. e.g. Webpack, Parcel, Rollup, Vite etc.
+
+    • Key Functions of a Bundler -
+
+      ○ Combining Files - Bundlers take various assets (JavaScript, CSS, HTML, images, etc.) and combine them into a single or a few files. This reduces the number of HTTP requests needed to load a web page, which can significantly speed up the loading process.
+        
+      ○ Dependency Management - Bundlers analyse the dependencies between different modules in your codebase and include them in the correct order in the final bundle. This ensures that all dependencies are loaded before the code that depends on them runs.
+
+      ○ Code Splitting - Bundlers can split your code into multiple bundles that can be loaded on demand, rather than loading the entire application at once. This technique, known as code splitting, helps to improve the initial load time of your application.
+
+      ○ Minification - Bundlers often include tools to minify your code, which means removing unnecessary characters (like whitespace, comments, and new lines) without changing its functionality. Minified code is smaller in size and loads faster.
+
+      ○ Transpiling - Many bundlers can transform modern JavaScript (ES6+) and other languages (like TypeScript) into a version of JavaScript that is compatible with older browsers. This process is called transpiling.
+
+      ○ Asset Management - Bundlers can handle various types of assets, including stylesheets (CSS/SCSS), images, fonts, and other files, often optimizing and converting them to formats that are more efficient for the web.
+
+  [04] Parcel
+
+    • A bundler is a development tool that combines many JavaScript code files into a single one that is production-ready loadable in the browser. Bundler that we will be using is Parcel.
+    • Parcel is a zero config bundler i.e. We do not need to create a lot of configs to use parcel.
+    
+    • Advantages of using parcel - https://parceljs.org/
+      ○ Super-fast build algorithm using HMR (Hot Module Replacement).
+      ○ Manages the port number in which our build is running. (if we have multiple builds running)
+      ○ Enables HTTPS on local development machine.
+      ○ Caching while development. (uses consistent hashing algorithm for caching)
+      ○ Optimizing app.
+      ○ Bundling files.
+      ○ Minifying & Compressing code.
+      ○ Remove console logs. (only if we use the babel plugin transform-remove-console)
+        https://babeljs.io/docs/babel-plugin-transform-remove-console/
+      ○ Image optimization.
+      ○ Performs consistent hashing, code splitting.
+      ○ Differential bundling - compatibility with older browser versions. (by adding polyfills)
+      ○ Tree shaking. (removing unwanted code)
+      ○ Diagnostics and error handling.
+      ○ Creating dev and production builds and running our build in local server.
+
+  [05] Why we need package-lock.json ?
+
+    • To know the exact version of packages that are installed in our app when it is deployed to production.
+    • It locks the version of the packages that are installed. It also maintains a hash (integrity), which ensures that whatever version of the package is running on the local system is also running on the production server.
+    • NOTE - Never keep package-lock.json file in .gitignore file.
+
+      ○ Normal dependencies - Dependency used in production also.
+      ○ Dev dependencies - Dependency required only for development phase.
+      ○ If we do not want a package to be available in production and only in development, we use the -D or --save-dev flag while installing the package. -D or --save-dev means dev dependency.
+      ○ E.g. npm i -D parcel
+
+    • NOTE - npm flags are case sensitive.
+
+  [06] Difference between caret ^ and tilde ~
+      
+    https://stackoverflow.com/questions/22343224/whats-the-difference-between-tilde-and-caret-in-package-json
+      
+    "devDependencies": {
+      "parcel": "^2.10.3"
+    }
+      
+    • ^ means version should auto upgrade whenever a minor fix is available. e.g. 2.10.3 to < 2.11.0
+    • ~ means version should auto upgrade whenever a major fix is available. e.g. 2.10.3 to < 3.0.0
+    • If nothing is specified before the version then there will be no upgrade.
+
+  [07] Transitive dependencies
+
+    • When we are building a production ready application, we need to perform a lot of activities.
+    e.g. bundling, minification, caching, optimization, HMR etc. And to do these, we need packages. 
+    • These packages are in turn dependent on other packages and this is known as transitive dependency.
+    • The package manager (bundler in this case) takes care of our transitive dependencies.
+
+  [08] Node modules
+
+    • It is a folder containing the code of all our dependencies and transitive dependencies.
+    • It is a collection of dependencies and acts like a database for all our packages, code, files.
+
+  [09] Why we do not put node modules on git ?
+
+    • This is because node-modules is a large file and we do not want it to occupy the space in git.
+    • Also the package-lock.json file has sufficient information to re-create node-modules because it keeps a track of all the dependencies.
+
+  [10] Igniting/Running the app using parcel
+
+    • npx command is used to execute a package.
+    • For e.g. To run our app we can use the command : npx parcel index.html
+    • Here index.html is the entry point to our app, which will be used to build the app and then it is hosted in http://localhost:1234.
+    
+  [11] Importing react and react-dom from node modules instead of using CDN.
+
+    • Earlier we were using CDN links to import the react library (not a preferred way) but now since we have installed react and react-dom library, we can use it from node modules folder. 
+    • In order to use it from node modules, we will have to use the import statements. Also the script tag containing the App.js will need to have an attribute called type="module" this is because it is no longer a script tag but a module.
+
+  [12] HMR - Hot Module Replacement
+    
+    • Whenever we write some code in app.js file and we save it, browser automatically refreshes to reflect the latest changes. This is being done by parcel and the process is called HMR.
+    • File watcher algorithm (written in C++) is used to detect the changes in the file.
+        
+    • .parcel-cache folder is automatically generated, which is used by parcel for HMR, minification of code etc. Add .parcel-cache in .gitignore file because anything that can be generated on server should be put in gitignore.
+        
+    • .dist folder is automatically created which holds the minified files required to run a production app.
+    
+    • run command npx parcel index.html, to create development build which runs on the server.
+    • run command npx parcel build index.html, to create production build which runs on the server.
+
+  [13] Installing packages
+
+    To install any package we can install it from the npm website.
+    For e.g. To remove the console logs, we will have to install a babel plugin transform-remove-console
+      npm install babel-plugin-transform-remove-console --save-dev
+      
+    To enable this package we have multiple options, we will be using a babel config file here to enable this plugin. Create a configuration file called .babelrc in the project root directory and add below code.
+      
+    {
+      "plugins": [
+        ["transform-remove-console", { "exclude": ["error", "warn"] }]
+      ]
+    }
+
+</details>
+
+### Episode 03
+
+<details>
+<summary>Notes</summary>
+
 </details>
 
 ## Credits
