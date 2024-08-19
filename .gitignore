@@ -1,3 +1,6 @@
-/02 parcel-app/node_modules
-/02 parcel-app/.parcel-cache
-/02 parcel-app/dist
+/02 parcel app/node_modules
+/02 parcel app/.parcel-cache
+/02 parcel app/dist
+/03 food app/node_modules
+/03 food app/.parcel-cache
+/03 food app/dist

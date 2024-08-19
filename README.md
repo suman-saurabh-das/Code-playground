@@ -76,7 +76,7 @@
       ○ Code Reusability
 </details>
 
-### Episode 02 - Igniting our app - i.e. deploying an app to production.
+### Episode 02 - Igniting our app - Deploying an app to production.
 
 <details>
 <summary>Notes</summary>
@@ -221,10 +221,66 @@
 
 </details>
 
-### Episode 03
+### Episode 03 - Laying the foundation - Basics of JSX
 
 <details>
 <summary>Notes</summary>
+
+  [01] Scripts
+  
+    • npm - It is used for installing the dependencies/packages inside a project.
+    • npx - It is used to execute a dependency/package.
+    • We can assume that npx is equivalent to npm run.
+    
+    • Scripts are used to execute commands. e.g. To create dev & prod build, execute tests etc.
+    • Create a script by adding scripts in package.json file.
+    • To run the script use command : npm run script_name
+    
+    "scripts": {
+        "start": "parcel index.html",
+        "build": "parcel build index.html"
+    },
+    
+  [02] JSX & Babel
+  
+    • JSX is HTML/XML like syntax which is used to create react elements.
+    • JSX attributes are written in camelCase. e.g. className, tabIndex.
+    • JSX spanning more than 1 line must be wrapped in parenthesis ().
+    • JSX elements are objects, which gets transpiled into HTML elements (when we pass it to the render() method), that the browsers can understand. This is done by Babel.
+  
+    • Babel : takes JSX code converts it to React.createElement()
+    • render() : converts the object that we get from React.createElement() to HTML elements.
+  
+    • Babel is a JS compiler. It converts the modern JS code into browser compatible JS.
+      ○ Polyfill - It is a code that acts as a replacement for a newer version of the code.
+      ○ Babel transpiler is used to create polyfills automatically.
+      ○ We can use the browserlist package to ensure that our code is compatible with older generation of browsers.
+  
+    • Why do we need JSX ?
+      ○ When we are creating an application, we need to create a HTML DOM structure. If we try to create this structure using React.createElement() then the code gets messy due to lots of nested functions. In order to fix this issue, we use JSX to create the DOM in a simpler way.
+      ○ NOTE - JSX is not HTML inside JavaScript, it just looks like HTML.
+  
+    • Advantages of JSX -
+      ○ Improves readability, maintainability and developer experience
+      ○ Provides syntactic sugar over React.createElement()
+      ○ Write less code without repeating.
+      ○ JSX also prevents XSS attacks by sanitizing the JS data that we pass in it.
+          
+    • Cross-site scripting (XSS) is an attack in which an attacker injects malicious executable scripts into the code of a trusted application or website. Attackers often initiate an XSS attack by sending a malicious link to a user and enticing the user to click it.
+  
+  [03] React components
+  
+    • Components are independent & reusable code that describe a part of the UI.
+    
+    • There are 2 types of components -
+    Class based components - OLD way - Uses JS classes to create components.
+    Functional components - NEW way - Uses JS functions to create components.
+      ○ JS functions returning JSX or a React element or a composition of elements is called functional components.
+      ○ It is a good practice to use PascalCase for naming components.
+      ○ Component composition - Placing components inside component.
+      ○ To have nested elements we can return a div containing the nested elements.
+      ○ In order to render a react component, we have to use the Component name inside </> brackets.
+      ○ If we want to write JS code inside JSX, then we need to use {} and write the JS code inside the parenthesis.
 
 </details>
 

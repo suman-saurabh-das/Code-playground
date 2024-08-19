@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "App configured with parcel",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "author": "Suman Saurabh Das",
